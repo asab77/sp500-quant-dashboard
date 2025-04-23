@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>S&P 500 Quant Dashboard</title>
+  <style>
+    /* Basic layout */
+    body { display: flex; font-family: sans-serif; margin: 0; }
+    #controls { width: 250px; padding: 1em; background: #f5f5f5; }
+    #chart { flex: 1; padding: 1em; }
+    .control-group { margin-bottom: 1em; }
+  </style>
+</head>
+<body>
+
+  <!-- Controls panel -->
+  <div id="controls">
+    <h3>Filters</h3>
+    <div class="control-group">
+      <label for="sector-select">Sector:</label><br>
+      <select id="sector-select"></select>
+    </div>
+
+    <div class="control-group">
+      <label for="date-range">Date range:</label><br>
+      <input type="range" id="date-range" min="0" max="100" value="100">
+    </div>
+
+    <div class="control-group">
+      <label>Metric:</label><br>
+      <input type="radio" name="metric" value="Return" checked> Return<br>
+      <input type="radio" name="metric" value="Sharpe"> Sharpe
+    </div>
+  </div>
+
+  <!-- Main chart area -->
+  <div id="chart">
+    <svg width="800" height="600"></svg>
+  </div>
+
+  <!-- Include D3 and our script -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="main.js"></script>
+
+  <div id="tooltip" style="
+    position: absolute;
+    pointer-events: none;
+    background: white;
+    border: 1px solid #ccc;
+    padding: 5px;
+    font-size: 12px;
+    visibility: hidden;
+"></div>
+
+</body>
+</html>
